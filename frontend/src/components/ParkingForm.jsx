@@ -1,18 +1,20 @@
 import { useState } from 'react';
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!start || !end || !vehicle) return;
-    AddRequest({ start, end, vehicle });
-    setStart('');
-    setEnd('');
-    setVehicle('');
-  };
-
-const ParkingForm = ({ addRequest }) => {
+const ParkingForm = ({onAddRequest}) => {
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
     const [vehicle, setVehicle] = useState('');
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!start || !end || !vehicle) return;
+        onAddRequest(start, end, vehicle);
+        setStart('');
+        setEnd('');
+        setVehicle('');
+    };
+    
+
     return (
         <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-4 space-y-4">
             <div>
