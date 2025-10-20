@@ -24,7 +24,7 @@ async function scheduling(req, res){
 
         const jsonString = JSON.stringify(scheduled, null, 2);
         fs.writeFile('scheduled.json', jsonString);
-        return res.status(200).json({message: "Agendamento bem sucedido."})
+        return res.status(200).json({message: "Agendamento bem sucedido.", tasks: scheduled})
     }catch(error){
         console.error(error.message);
         return res.status(500).json({message: "Erro no agendamento."})

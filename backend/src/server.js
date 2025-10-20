@@ -12,7 +12,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.use('/', router);
+app.use('/api', router);
 
 app.listen(8080,  () => {
     console.log("Server started on port 8080");
