@@ -1,27 +1,42 @@
 [
   {
-    "title": "Develop Function A",
-    "start": "2025-10-20T09:00:00Z",
+    "title": "System Architecture Design (a)",
+    "start": "2025-10-20T00:00:00Z",
+    "end": "2025-10-20T06:00:00Z"
+  },
+  {
+    "title": "Frontend Prototype (b)",
+    "start": "2025-10-20T01:00:00Z",
+    "end": "2025-10-20T04:00:00Z"
+  },
+  {
+    "title": "Database Setup (c)",
+    "start": "2025-10-20T03:00:00Z",
+    "end": "2025-10-20T05:00:00Z"
+  },
+  {
+    "title": "API Integration (d)",
+    "start": "2025-10-20T03:00:00Z",
+    "end": "2025-10-20T08:00:00Z"
+  },
+  {
+    "title": "Unit Testing (e)",
+    "start": "2025-10-20T04:00:00Z",
+    "end": "2025-10-20T07:00:00Z"
+  },
+  {
+    "title": "UI Polishing (f)",
+    "start": "2025-10-20T05:00:00Z",
+    "end": "2025-10-20T09:00:00Z"
+  },
+  {
+    "title": "Deployment Pipeline (g)",
+    "start": "2025-10-20T06:00:00Z",
+    "end": "2025-10-20T10:00:00Z"
+  },
+  {
+    "title": "Final Validation (h)",
+    "start": "2025-10-20T08:00:00Z",
     "end": "2025-10-20T11:00:00Z"
-  },
-  {
-    "title": "Code Review - Module B",
-    "start": "2025-10-21T13:00:00Z",
-    "end": "2025-10-21T14:30:00Z"
-  },
-  {
-    "title": "Design API Endpoints",
-    "start": "2025-10-22T10:00:00Z",
-    "end": "2025-10-22T12:00:00Z"
-  },
-  {
-    "title": "Implement Unit Tests",
-    "start": "2025-10-23T09:30:00Z",
-    "end": "2025-10-23T11:00:00Z"
-  },
-  {
-    "title": "Prepare Documentation",
-    "start": "2025-10-24T14:00:00Z",
-    "end": "2025-10-24T16:00:00Z"
   }
 ]

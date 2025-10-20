@@ -19,7 +19,7 @@ async function addTask(req, res){
         }
         const data = await fs.readFile('data.json', 'utf8');
         const object = JSON.parse(data);
-        object.tasks.push(task);
+        object.push(task);
         const jsonString = JSON.stringify(object, null, 2);
         await fs.writeFile('data.json', jsonString);
 

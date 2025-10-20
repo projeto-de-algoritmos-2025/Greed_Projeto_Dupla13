@@ -8,7 +8,7 @@ async function removeTask(req, res){
     try{
         const data = await fs.readFile('data.json', 'utf8');
         const object = JSON.parse(data);
-        const newData = object.tasks.filter((task) => task.title != task_title);
+        const newData = object.filter((task) => task.title != task_title);
         const jsonString = JSON.stringify(newData, null, 2);
         await fs.writeFile('data.json', jsonString);
 
