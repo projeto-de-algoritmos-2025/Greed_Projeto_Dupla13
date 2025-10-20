@@ -9,7 +9,7 @@ async function removeTask(req, res){
         const data = await fs.readFile('data.json', 'utf8');
         const object = JSON.parse(data);
         const newData = object.tasks.filter((task) => task.title != task_title);
-        const jsonString = JSON.stringify(newData);
+        const jsonString = JSON.stringify(newData, null, 2);
         await fs.writeFile('data.json', jsonString);
 
         return res.status(200).json({message: "Sucesso ao apagar dados."})
