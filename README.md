@@ -46,4 +46,4 @@ cd backend && npm install && npm run dev
 ## Vídeo
 [Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.]: #
 
-[Vídeo de explicação do projeto](https://youtu.be/)
+[Vídeo de explicação do projeto](https://youtu.be/INkflZm_X1Y)
