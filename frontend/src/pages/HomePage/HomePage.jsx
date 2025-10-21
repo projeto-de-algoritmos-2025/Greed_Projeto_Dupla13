@@ -8,12 +8,16 @@ import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 
 const HomePage = () => {
-  const [requests, setRequests] = useState([]);
   const [data, setData] = useState([]);
   const [result, setResult] = useState([]);
 
-  const handleAddRequest = (req) => {
-    setRequests([...requests, req]);
+  const handleAddRequest = async(req) => {
+    const response = await axios.post('http://localhost:8080/api/task/add', req);
+    if(response.statusText !== 'OK'){
+      toast("Erro ao adicionar tarefa.");
+      return;
+    };
+    setData(response.data.tasks)
   };
 
   // aplicação mock de um algoritmo de otimização
@@ -21,10 +25,11 @@ const HomePage = () => {
     // const sorted = [...requests].sort((a, b) => a.end.localeCompare(b.end));
     // setResult(sorted);
     const response = await axios.get('http://localhost:8080/api/task/schedule');
-    if(!response.ok){
+    console.log(response.data)
+    if(response.statusText !== 'OK'){
       toast("Erro ao agendar tarefas.");
     }else{
-      setResult(response.data);
+      setResult(response.data.tasks);
     }
   };
   // verificar se mantém o código ou não
@@ -48,7 +53,7 @@ const HomePage = () => {
       <Header />
       <main className=''>
         <ToastContainer/>
-        <ParkingForm onSubmit={handleAddRequest} />
+        <ParkingForm onAddRequest={handleAddRequest} />
         <ParkingTable requests={data} />
         {/* esse botão irá ativar o algoritmo ambicioso */}
         <div className="text-center">

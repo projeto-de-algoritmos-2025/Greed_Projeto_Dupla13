@@ -1,5 +1,11 @@
 import { useState } from 'react';
 
+function toISODateTime(timeStr) {
+    const [hours, minutes] = timeStr.split(":").map(Number);
+    const today = new Date;
+    today.setHours(hours, minutes);
+    return today.toISOString();
+}
 const ParkingForm = ({onAddRequest}) => {
     const [start, setStart] = useState('');
     const [end, setEnd] = useState('');
@@ -8,12 +14,11 @@ const ParkingForm = ({onAddRequest}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (!start || !end || !vehicle) return;
-        onAddRequest(start, end, vehicle);
+        onAddRequest({task: {title: vehicle, start: toISODateTime(start), end: toISODateTime(end)}});
         setStart('');
         setEnd('');
         setVehicle('');
     };
-    
 
     return (
         <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-4 space-y-4">
