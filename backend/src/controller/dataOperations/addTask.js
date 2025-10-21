@@ -23,7 +23,7 @@ async function addTask(req, res){
         const jsonString = JSON.stringify(object, null, 2);
         await fs.writeFile('data.json', jsonString);
 
-        return res.status(200).json({message: "Sucesso ao salvar dados."})
+        return res.status(200).json({message: "Sucesso ao salvar dados.", tasks: object})
     }catch(error){
         console.error(error.message);
         res.status(500).json({message: 'Erro ao salvar dados.'});

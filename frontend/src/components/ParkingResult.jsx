@@ -1,3 +1,8 @@
+function isoToLocalTime(isoStr) {
+  const date = new Date(isoStr);
+  return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
+}
+
 const ParkingResult = ({ result }) => {
 if (!result || result.length === 0)
     return <p className="text-gray-500 text-center mt-4">Nenhum agendamento otimizado ainda.</p>;
@@ -8,7 +13,7 @@ if (!result || result.length === 0)
         <ul className="list-disc ml-6">
             {result.map((r, index) => (
             <li key={index}>
-                {r.vehicle} — {r.start} até {r.end}
+                {r.title} — {isoToLocalTime(r.start)} até {isoToLocalTime(r.end)}
             </li>
             ))}
         </ul>

@@ -5,41 +5,56 @@ import ParkingResult from '../../components/ParkingResult';
 import ParkingTable from '../../components/ParkingTable';
 
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 
 const HomePage = () => {
-  const [requests, setRequests] = useState([]);
+  const [data, setData] = useState([]);
   const [result, setResult] = useState([]);
 
-  const handleAddRequest = (req) => {
-    setRequests([...requests, req]);
+  const handleAddRequest = async(req) => {
+    const response = await axios.post('http://localhost:8080/api/task/add', req);
+    if(response.statusText !== 'OK'){
+      toast("Erro ao adicionar tarefa.");
+      return;
+    };
+    setData(response.data.tasks)
   };
 
   // aplicação mock de um algoritmo de otimização
-  const handleOptimize = () => {
-    const sorted = [...requests].sort((a, b) => a.end.localeCompare(b.end));
-    setResult(sorted);
+  const handleOptimize = async() => {
+    // const sorted = [...requests].sort((a, b) => a.end.localeCompare(b.end));
+    // setResult(sorted);
+    const response = await axios.get('http://localhost:8080/api/task/schedule');
+    console.log(response.data)
+    if(response.statusText !== 'OK'){
+      toast("Erro ao agendar tarefas.");
+    }else{
+      setResult(response.data.tasks);
+    }
   };
   // verificar se mantém o código ou não
-  const fetchAPI = async () => {
+  const fetchData = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api');
-      setArray(response.data);
+      const response = await axios.get('http://localhost:8080/api/task');
+      setData(response.data);
       console.log(response.data);
     } catch (error) {
+      toast('Erro ao buscar dados da API:', error);
       console.error('Erro ao buscar dados da API:', error);
     }
   };
 
   useEffect(() => {
-    fetchAPI();
+    fetchData();
   }, []);
 
   return (
     <div>
       <Header />
       <main className=''>
+        <ToastContainer/>
         <ParkingForm onAddRequest={handleAddRequest} />
-        <ParkingTable requests={requests} />
+        <ParkingTable requests={data} />
         {/* esse botão irá ativar o algoritmo ambicioso */}
         <div className="text-center">
           <button
