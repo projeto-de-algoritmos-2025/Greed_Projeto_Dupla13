@@ -3,7 +3,7 @@ import { useState } from 'react';
 function toISODateTime(timeStr) {
     const [hours, minutes] = timeStr.split(":").map(Number);
     const today = new Date;
-    today.setHours(hours, minutes);
+    today.setHours(hours, minutes, 0, 0);
     return today.toISOString();
 }
 const ParkingForm = ({onAddRequest}) => {
